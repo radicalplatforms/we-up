@@ -94,8 +94,7 @@ jobs:
   cf_deploy_hono_stage:
     name: Deploy Hono to Stage
     runs-on: ubuntu-latest
-    needs: test_matrix
-
+    needs: test_smoke
     environment:
       name: hono-stage-${{ github.event.number }}
       url: ${{ env.DEPLOY_ROUTE }}
