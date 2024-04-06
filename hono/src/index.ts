@@ -5,7 +5,11 @@ import { version } from '../package.json'
 import groups from './services/groups'
 import users from './services/users'
 
+require('dotenv').config();
+
 const app = new Hono()
+const BASE_URL = `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/images/v1`;
+const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
 
 app.onError((err, c) => {
   console.error(`${err}`)
