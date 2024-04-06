@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS "groups" (
 	"id" text PRIMARY KEY NOT NULL,
-	"rule" text
+	"rules" text
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "posts" (
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS "prompts" (
 	"group_id" text NOT NULL,
 	"date" timestamp with time zone DEFAULT now() NOT NULL,
 	"text" text,
-	"author" text NOT NULL
+	"user_id" text NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
