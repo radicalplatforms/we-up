@@ -42,7 +42,7 @@ export const groups = pgTable('groups', {
   id: text('id')
     .$defaultFn(() => createId())
     .primaryKey(),
-  rule: text('rule'),
+  rules: text('rules'),
 })
 
 export const groupsRelations = relations(groups, ({ many }) => ({
@@ -59,7 +59,7 @@ export const prompts = pgTable('prompts', {
   groupId: text('group_id').notNull(),
   date: timestamp('date', { withTimezone: true }).notNull().defaultNow(),
   text: text('text'),
-  author: text('author').notNull(),
+  userId: text('user_id').notNull(),
 })
 
 export const promptsRelations = relations(prompts, ({ one }) => ({
