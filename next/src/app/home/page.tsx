@@ -1,6 +1,6 @@
 import HomeDropdown from '../components/HomeDropdown';
 import WeUpLogo from '../assets/weup.png';
-import Image from 'next/image'; // Import the correct component for WeUpLogo
+import Image from 'next/image';
 
 export default function Home() {
     const MoonIndicator = () => (
