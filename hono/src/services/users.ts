@@ -27,7 +27,7 @@ app.post('/', injectDB, async (c) => {
 })
 
 app.put('/:userId', injectDB, async (c) => {
-    const param = c.req.param('userId')
+  const param = c.req.param('userId')
   const body = await c.req.json()
   if (body.wakeTime && typeof body.wakeTime === 'string') {
     body.wakeTime = new Date(body.wakeTime)
@@ -36,7 +36,8 @@ app.put('/:userId', injectDB, async (c) => {
     await c
       .get('db')
       .update(users)
-      .set({ ...body }).where(eq(users.id, param))
+      .set({ ...body })
+      .where(eq(users.id, param))
       .returning()
   )
 })
