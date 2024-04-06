@@ -35,7 +35,6 @@ export const postsRelations = relations(posts, ({ one }) => ({
   users: one(users),
 }))
 
-
 /**
  * Groups
  */
@@ -70,8 +69,9 @@ export const promptsRelations = relations(prompts, ({ one }) => ({
 /**
  * Users to Groups
  */
-export const usersToGroups  = pgTable('users_to_groups', {
-  
+export const usersToGroups = pgTable(
+  'users_to_groups',
+  {
     userId: text('user_id')
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
@@ -85,4 +85,3 @@ export const usersToGroups  = pgTable('users_to_groups', {
     }
   }
 )
-
