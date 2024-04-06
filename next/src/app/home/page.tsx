@@ -39,6 +39,20 @@ export default function Home() {
                     </div>
                 </div>
 
+                <a className="flex flex-col justify-between max-w-sm p-6 bg-white border-2 border-gray-300 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <div>
+                        <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Sleep Group Rules</h5>
+                        <p className="text-sm font-normal text-gray-700 dark:text-gray-400">
+                            1. All members must aim for at least 7-9 hours of sleep each night.<br/>
+                            2. No electronic devices in the bedroom after 9 PM.<br/>
+                            3. Daily sleep logs must be updated by 10 AM the following morning.<br/>
+                            4. Weekly group discussions on sleep quality and improvement strategies.<br/>
+                            5. Respect all members' experiences and suggestions.<br/>
+                            6. Maintain a positive and supportive environment.
+                        </p>
+                    </div>
+                </a>
+
             </div>
             <div>
                 <Image src={WeUpLogo} className="w-48 h-80" alt={''} />
