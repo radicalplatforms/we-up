@@ -9,7 +9,7 @@ const app = new Hono<{ Variables: Variables }>()
 app.get('/:email', injectDB, async (c) => {
   const param = c.req.param('email')
   console.log(param)
-  return c.json(await c.get('db').select().from(users).where(eq(users.email, param)).execute())
+  return c.json((await c.get('db').select().from(users).where(eq(users.email, param)).execute())[0])
 })
 
 app.post('/', injectDB, async (c) => {
@@ -18,11 +18,13 @@ app.post('/', injectDB, async (c) => {
     body.wakeTime = new Date(body.wakeTime)
   }
   return c.json(
-    await c
-      .get('db')
-      .insert(users)
-      .values({ ...body })
-      .returning()
+    (
+      await c
+        .get('db')
+        .insert(users)
+        .values({ ...body })
+        .returning()
+    )[0]
   )
 })
 
@@ -33,12 +35,14 @@ app.put('/:userId', injectDB, async (c) => {
     body.wakeTime = new Date(body.wakeTime)
   }
   return c.json(
-    await c
-      .get('db')
-      .update(users)
-      .set({ ...body })
-      .where(eq(users.id, param))
-      .returning()
+    (
+      await c
+        .get('db')
+        .update(users)
+        .set({ ...body })
+        .where(eq(users.id, param))
+        .returning()
+    )[0]
   )
 })
 
