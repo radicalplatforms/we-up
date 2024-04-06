@@ -17,6 +17,7 @@ export const users = pgTable('users', {
 
 export const usersRelations = relations(users, ({ many }) => ({
   usersToGroups: many(usersToGroups),
+  posts: many(posts),
 }))
 
 /**
@@ -47,6 +48,7 @@ export const groups = pgTable('groups', {
 
 export const groupsRelations = relations(groups, ({ many }) => ({
   usersToGroups: many(usersToGroups),
+  prompts: many(prompts),
 }))
 
 /**
@@ -64,6 +66,7 @@ export const prompts = pgTable('prompts', {
 
 export const promptsRelations = relations(prompts, ({ one }) => ({
   groups: one(groups),
+  users: one(users),
 }))
 
 /**
