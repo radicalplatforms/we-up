@@ -16,49 +16,48 @@ export default function Home() {
     );
       
     return (
-        <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-        <div className="grid grid-cols-2 gap-2">
-            <div>
-                <HomeDropdown />
-                <div className="my-2 gap-1 flex">
-                    <div className="relative">
-                        <Image src={WeUpLogo} className="w-10 h-10 rounded-full" alt={''} />
-                        <MoonIndicator />
+        <main className='flex min-h-screen flex-col items-center justify-between p-24 bg-gray-100 dark:bg-gray-900'>
+            <div className="grid grid-cols-2 gap-8">
+                <div className="space-y-8">
+                    <HomeDropdown />
+                    <div className="flex gap-4">
+                        <div className="relative">
+                            <Image src={WeUpLogo} className="w-10 h-10 rounded-full" alt={''} />
+                            <MoonIndicator />
+                        </div>
+                        <div className="relative">
+                            <Image src={WeUpLogo} className="w-10 h-10 rounded-full" alt={''} />
+                            <SunIndicator />
+                        </div>
+                        <div className="relative">
+                            <Image src={WeUpLogo} className="w-10 h-10 rounded-full" alt={''} />
+                            <span className="top-0 start-7 absolute w-3.5 h-3.5 bg-red-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                        </div>
+                        <div className="relative">
+                            <Image src={WeUpLogo} className="w-10 h-10 rounded-full" alt={''} />
+                            <span className="top-0 start-7 absolute w-3.5 h-3.5 bg-red-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                        </div>
                     </div>
-                    <div className="relative">
-                        <Image src={WeUpLogo} className="w-10 h-10 rounded-full" alt={''} />
-                        <SunIndicator />
-                    </div>
-                    <div className="relative">
-                        <Image src={WeUpLogo} className="w-10 h-10 rounded-full" alt={''} />
-                        <span className="top-0 start-7 absolute w-3.5 h-3.5 bg-red-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
-                    </div>
-                    <div className="relative">
-                        <Image src={WeUpLogo} className="w-10 h-10 rounded-full" alt={''} />
-                        <span className="top-0 start-7 absolute w-3.5 h-3.5 bg-red-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
+
+                    <div className="flex flex-col justify-between max-w-sm p-6 bg-white border-2 border-gray-300 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <div>
+                            <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Sleep Group Rules</h5>
+                            <p className="text-sm font-normal text-gray-700 dark:text-gray-400">
+                                1. All members must aim for at least 7-9 hours of sleep each night.<br/>
+                                2. No electronic devices in the bedroom after 9 PM.<br/>
+                                3. Daily sleep logs must be updated by 10 AM the following morning.<br/>
+                                4. Weekly group discussions on sleep quality and improvement strategies.<br/>
+                                5. Respect all members' experiences and suggestions.<br/>
+                                6. Maintain a positive and supportive environment.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <a className="flex flex-col justify-between max-w-sm p-6 bg-white border-2 border-gray-300 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                    <div>
-                        <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Sleep Group Rules</h5>
-                        <p className="text-sm font-normal text-gray-700 dark:text-gray-400">
-                            1. All members must aim for at least 7-9 hours of sleep each night.<br/>
-                            2. No electronic devices in the bedroom after 9 PM.<br/>
-                            3. Daily sleep logs must be updated by 10 AM the following morning.<br/>
-                            4. Weekly group discussions on sleep quality and improvement strategies.<br/>
-                            5. Respect all members' experiences and suggestions.<br/>
-                            6. Maintain a positive and supportive environment.
-                        </p>
-                    </div>
-                </a>
-
+                <div className="flex items-center justify-center">
+                    <Image src={WeUpLogo} className="w-48 h-80" alt={''} />
+                </div>
             </div>
-            <div>
-                <Image src={WeUpLogo} className="w-48 h-80" alt={''} />
-            </div>
-        </div>
-
         </main>
     );
 }
