@@ -1,25 +1,44 @@
+import { eq } from 'drizzle-orm'
 import { Hono } from 'hono'
+import { users } from '../schema'
 import type { Variables } from '../utils/inject-db'
 import injectDB from '../utils/inject-db'
-import { users} from '../schema'
-import { eq } from 'drizzle-orm'
 
 const app = new Hono<{ Variables: Variables }>()
 
 app.get('/:email', injectDB, async (c) => {
-    const param = c.req.param('email')
-    console.log(param)
-    return c.json(await c.get('db').select().from(users).where(eq(users.email, param)).execute());
-  });
+  const param = c.req.param('email')
+  console.log(param)
+  return c.json(await c.get('db').select().from(users).where(eq(users.email, param)).execute())
+})
 
 app.post('/', injectDB, async (c) => {
-    const body = await c.req.json()
-    return c.json(await c.get('db').insert(users).values({...body}).returning());
-});
+  const body = await c.req.json()
+  if (body.wakeTime && typeof body.wakeTime === 'string') {
+    body.wakeTime = new Date(body.wakeTime)
+  }
+  return c.json(
+    await c
+      .get('db')
+      .insert(users)
+      .values({ ...body })
+      .returning()
+  )
+})
 
-app.put('/', injectDB, async (c) => {
-    const body = await c.req.json()
-    return c.json(await c.get('db').update(users).set({...body}).returning());
-});
+app.put('/:userId', injectDB, async (c) => {
+    const param = c.req.param('userId')
+  const body = await c.req.json()
+  if (body.wakeTime && typeof body.wakeTime === 'string') {
+    body.wakeTime = new Date(body.wakeTime)
+  }
+  return c.json(
+    await c
+      .get('db')
+      .update(users)
+      .set({ ...body }).where(eq(users.id, param))
+      .returning()
+  )
+})
 
 export default app
