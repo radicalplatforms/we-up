@@ -98,7 +98,7 @@ export default function Home2() {
             {/* Prompt */}
             <div className="pt-24">
                 <div>
-                    <h1 className="lowercase text-center mb-8 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Today's <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Prompt</mark></h1>
+                    <h1 className="lowercase text-center mb-8 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Prompt</mark></h1>
                 </div>
                 <div className="flex items-start gap-2.5">
                     {/* <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} /> */}
