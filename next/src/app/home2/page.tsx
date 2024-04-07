@@ -39,7 +39,7 @@ export default function Home2() {
             {/* Group Info */}
             <GroupInfo />
             {/* Feed */}
-            <FeedInfo isUp={isUp} handleClick={handleClick}/>
+            <FeedInfo isUp={true} handleClick={handleClick}/>
             </div>
         </div>
 

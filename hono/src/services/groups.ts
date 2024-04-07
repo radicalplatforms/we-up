@@ -104,7 +104,6 @@ app.post('/prompt', injectDB, async (c) => {
 app.post('/post', injectDB, async (c) => {
   const body = (await c.req.formData()) as FormData
   const file = body.get('file')
-  console.log(file)
   const send = new FormData()
   send.append('file', file, file.name)
   const { CLOUDFLARE_ACCOUNT_ID } = env<{ CLOUDFLARE_ACCOUNT_ID: string }>(c)
@@ -120,7 +119,6 @@ app.post('/post', injectDB, async (c) => {
     }
   )
   const resJson = await response.json()
-  console.log(resJson)
   const photo_url = resJson.result.variants[4]
 
   const postBody = { userId: body.get('userId'), photoUrl: photo_url, timestamp: new Date() }
