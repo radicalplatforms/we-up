@@ -88,3 +88,14 @@ export const usersToGroups = pgTable(
     }
   }
 )
+
+export const usersToGroupsRelations = relations(usersToGroups, ({ one }) => ({
+  user: one(users, {
+    fields: [usersToGroups.userId],
+    references: [users.id],
+  }),
+  group: one(groups, {
+    fields: [usersToGroups.groupId],
+    references: [groups.id],
+  }),
+}))
