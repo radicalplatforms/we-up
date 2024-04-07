@@ -2,7 +2,6 @@
 import HomeDropdown from '../components/HomeDropdown';
 import WeUpLogo from '../assets/weup.png';
 import Image from 'next/image';
-import WakeupChart from '../charts/WakeupChart';
 
 export default function Home() {
       
@@ -61,7 +60,6 @@ export default function Home() {
                     <Image src={WeUpLogo} className="w-48 h-80" alt={''} />
                 </div>
             </div>
-            <WakeupChart />
         </main>
     );
 }
