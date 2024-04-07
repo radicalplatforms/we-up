@@ -4,6 +4,7 @@ import WeUpLogo from '../assets/weup.png';
 import Image from 'next/image';
 import HomeDropdown from '../components/HomeDropdown';
 import Navbar from '../components/Navbar';
+import LineChart from '../charts/LineChart';
 
 export default function Home2() {
           
@@ -87,6 +88,10 @@ export default function Home2() {
                                 2. No electronic devices in the bedroom after 9 PM.<br/>
                                 3. Daily sleep logs must be updated by 10 AM the following morning.<br/>
                             </div>
+                        </div>
+
+                        <div className="my-4 items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+                            <LineChart />
                         </div>
 
                         {/* Upload function */}

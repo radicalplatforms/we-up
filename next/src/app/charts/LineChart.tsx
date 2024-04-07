@@ -18,7 +18,7 @@ export default function LineChart() {
     };
 
     return (
-        <div className="w-96">
+        <div className="w-auto">
             <Line data={data} />
         </div>
     );
