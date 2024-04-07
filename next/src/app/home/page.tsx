@@ -21,34 +21,6 @@ export default function Home() {
       
     return (
         <>
-        <div className="bg-white">
-            <ul role="list" className="w-4/12">
-                <li className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
-                    <div className="flex items-center space-x-3 rtl:space-x-reverse px-4">
-                        <div className="flex-shrink-0">
-                            <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
-                                zachedey
-                            </p>
-                            <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                                07:01 AM
-                            </p>
-                        </div>
-                        <span className="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
-                            <span className="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
-                            Up!
-                        </span>
-                    </div>
-                    <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
-                </li>
-            </ul>
-        </div>
-
-
-
-
 
         <div className='flex min-h-screen flex-col items-center justify-between p-24 bg-gray-100 dark:bg-gray-900'>
             
