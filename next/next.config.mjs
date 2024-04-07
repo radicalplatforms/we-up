@@ -11,6 +11,9 @@ if (process.env.NODE_ENV === 'development') {
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ['imagedelivery.net'],
+  },
 
   webpack: (config, { isServer }) => {
     if (!isServer) {

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import LineChart from "../charts/LineChart";
 import HomeDropdown from "./HomeDropdown";
 import Image from 'next/image';
@@ -7,13 +7,31 @@ import WeUpLogo from '../assets/weup.png';
 
 export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick: any }) {
 
-    const handleImageUpload = (event: { target: { files: any[]; }; }) => {
-        const file = event.target.files[0];
-        if (file) {
-            handleClick();
-        }
-    };
+    const [imageSrcs, setImageSrcs] = useState([]);
 
+    useEffect(() => {
+        const fetchImage = async () => {
+            try {
+                const response = await fetch("http://127.0.0.1:8787/api/group/rsf9kxfvz4dauvggv47wbf0c"); 
+                const data = await response.json();
+                const posts = data.post;
+                
+                const photoUrls = posts.map(post => post.photoUrl).filter(url => url !== undefined);
+
+                if (photoUrls.length > 0) {
+                    setImageSrcs(photoUrls); // Set the found photoUrls array
+                } else {
+                    console.error("No posts found or posts have no photoUrl");
+                }
+            } catch (error) {
+                console.error("Failed to fetch image:", error);
+            }
+        };
+    
+        if (isUp) {
+            fetchImage();
+        }
+    }, [isUp]);
     return (
         <>
                 {/* Fixed upload button */}
@@ -23,22 +41,34 @@ export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick
                     </button>
                 </div>
 
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                            <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                {isUp ? (
-                                <Image src={WeUpLogo} className="w-full h-64 object-cover rounded-lg" alt={''} />
-                                ) : (
-                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                    </svg>
-                                    <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                </div>
-                                )}
-                                <input id="dropzone-file" type="file" className="hidden"/>
-                            </label>
-                        </div> 
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-4 mb-4">
+                {isUp ? (
+                    <div className="grid gap-4">
+                        {imageSrcs.map((src, index) => (
+                            <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+                                <Image 
+                                    src={src} 
+                                    layout="responsive" 
+                                    width={700} // replace with the actual aspect ratio of the images
+                                    height={400} // replace with the actual aspect ratio of the images
+                                    objectFit="cover" 
+                                    alt={`Image ${index}`} 
+                                />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+            // Fallback or placeholder content
+            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                </svg>
+                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+            </div>
+        )}
+        </div>
+        {/* <input id="dropzone-file" type="file" className="hidden"/> */}
                          <div className="pt-4">
                     <div>
                         <h1 className="lowercase text-center my-6 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-semibold leading-none tracking-tight text-gray-900 dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Feed</mark></h1>

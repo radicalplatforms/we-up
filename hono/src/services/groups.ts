@@ -6,7 +6,7 @@ import { env } from 'hono/adapter'
 import { groups, posts, prompts, usersToGroups } from '../schema'
 import type { Variables } from '../utils/inject-db'
 import injectDB from '../utils/inject-db'
-import type { GroupType, CloudflareResponse, Post } from '../utils/type-definitions'
+import type { CloudflareResponse, GroupType, Post } from '../utils/type-definitions'
 
 const app = new Hono<{ Variables: Variables }>()
 
@@ -122,8 +122,11 @@ app.post('/post', injectDB, async (c) => {
   const resJson = (await response.json()) as CloudflareResponse
   const photo_url = resJson.result.variants[4]
 
-  const userId = body.get('userId')
-  const postBody = { userId, photoUrl: photo_url, timestamp: new Date() } as Post
+  const postBody = {
+    userId: body.get('userId'),
+    photoUrl: photo_url,
+    timestamp: new Date(),
+  } as Post
   return c.json((await c.get('db').insert(posts).values(postBody).returning())[0])
 })
 
