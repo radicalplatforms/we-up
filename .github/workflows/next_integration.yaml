@@ -8,10 +8,10 @@ env:
   PAGES_PROJECT_NAME: we-up-next
   DEPLOY_TAG: we-up-next-stage-${{ github.event.number }}
   DEPLOY_ROUTE: https://we-up-next-stage-${{ github.event.number }}.we-up-next.pages.dev
-  AUTH0_SECRET: ${{ secrets.AUTH0_SECRET }}
+  AUTH0_SECRET: ${{ secrets.STAGE_AUTH0_SECRET }}
   AUTH0_ISSUER_BASE_URL: https://rakerman.us.auth0.com
   AUTH0_CLIENT_ID: Vo3Xv3M9AvgOdrYAdFnLvyjsTXOda3zm
-  AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+  AUTH0_CLIENT_SECRET: ${{ secrets.STAGE_AUTH0_CLIENT_SECRET }}
   BACKEND_BASE_URL: https://we-up-hono-stage-${{ github.event.number }}.we-up-next.pages.dev
 
 jobs:
