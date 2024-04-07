@@ -13,17 +13,19 @@ const { CLOUDFLARE_API_TOKEN } = env<{ CLOUDFLARE_API_TOKEN: string }>(c)
 
 app.get('/:email', injectDB, async (c) => {
   const param = c.req.param('email')
-  return c.json(
-    await c.get('db').query.users.findFirst({
-      where: eq(users.email, decodeURIComponent(param)),
-      with: {
-        usersToGroups: {
-          columns: { userId: false, groupId: false },
-          with: { group: true },
-        },
+  const res = await c.get('db').query.users.findFirst({
+    where: eq(users.email, decodeURIComponent(param)),
+    with: {
+      usersToGroups: {
+        columns: { userId: false, groupId: false },
+        with: { group: true },
       },
-    })
-  )
+    },
+  })
+  if (res) {
+    return c.json(res)
+  }
+  return c.notFound()
 })
 
 app.post('/', injectDB, async (c) => {
