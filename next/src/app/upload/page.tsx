@@ -3,34 +3,26 @@ import React, { Component, useState } from 'react';
 import WeUpLogo from '../assets/weup.png';
 import Image from 'next/image';
 import HomeDropdown from '../components/HomeDropdown';
-import fs from 'fs';
-import uploadImageToCloudflare from './imageUpload';
-
+import {uploadImageToCloudflare} from './imageUpload';
 
 export default function Upload() {
-
     const [selectedFile, setSelectedFile] = useState(null);
 
-    const handleFileChange = (event) => {
-        setSelectedFile(event.target.files[0]);
-    };
-
-    const handleUpload = async () => {
-        if (selectedFile) {
+    const handleFileChange = async (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setSelectedFile(file);
             try {
-                // Read the selected file and upload it
-                const fileBuffer = fs.readFileSync(selectedFile.path);
-                const filename = selectedFile.name;
-                const formData = new FormData();
-                formData.append("file", fileBuffer, filename);
-
-                // Call the upload function
-                await uploadImageToCloudflare(formData);
+                await uploadImageToCloudflare(file, 'ldfm1lck9gcytdfju6b8dgjd')
+                console.log('Upload successful');
+                alert('Upload successful');
             } catch (error) {
                 console.error('Error uploading image:', error);
+                alert('Error uploading image');
             }
         } else {
             console.error('No file selected');
+            alert('No file selected');
         }
     };
 
@@ -62,7 +54,7 @@ export default function Upload() {
                                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                                     <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                 </div>
-                                <input id="dropzone-file" type="file" className="hidden" />
+                                <input id="dropzone-file" type="file" className="hidden" onChange={handleFileChange} />
                             </label>
                         </div> 
 

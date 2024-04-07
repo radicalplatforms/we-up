@@ -1,25 +1,24 @@
-import fs from 'fs';
 import FormData from 'form-data';
 
-export default async function uploadImageToCloudflare(formData: FormData) {
+export async function uploadImageToCloudflare(file, userId) {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("userId", userId)
     try {
-        const image = fs.readFileSync('./image.jpg');
-        const blobData = new Blob([image]);
-        formData.append("file", blobData, "filename_for_cloudflare");
-
-        const response = await fetch(
-            `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/images/v1`, {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${process.env.CLOUDFLARE_UPLOAD_TOKEN}`,
-            },
-            body: formData,
-        });
-
-        // Your image has been uploaded
-        // Do something with the response, e.g. save image ID in a database
-        console.log(await response.json());
+      const response = await fetch('http://127.0.0.1:8787/api/group/post', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      alert('Upload successful');
     } catch (error) {
-        console.log(error.toString());
+      console.error('Error uploading image:', error);
+      alert('Error uploading image');
     }
-}
+  }
