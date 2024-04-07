@@ -38,7 +38,7 @@ jest.mock('../../src/utils/inject-db', () => {
 
 const testUser1 = {
   name: 'John Doe',
-  email: 'john@example.com',
+  email: encodeURI('john@example.com'),
   photoUrl: 'https://example.com/john.jpg',
   wakeTime: '2024-04-06T08:00:00+00:00',
 }
