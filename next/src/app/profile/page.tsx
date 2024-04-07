@@ -1,13 +1,15 @@
 import {UserCircleIcon} from '@heroicons/react/24/solid'
 import Navbar from "../components/Navbar";
 import {withPageAuthRequired, getSession} from '@auth0/nextjs-auth0/edge';
+import {getUserAPI} from '../../util/api-helpers'
 
 export default withPageAuthRequired(async function Profile() {
-  const session = await getSession();
+  const session = await getSession()
+  const user = await getUserAPI(session?.user.email)
 
   return (
     <main className="bg-white">
-      <Navbar showBackHome={true}/>
+      <Navbar linkText={user ? "Back Home" : undefined} linkHref={"/home"}/>
       <form className="p-16">
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
