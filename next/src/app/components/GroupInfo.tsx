@@ -4,6 +4,11 @@ import LineChart from "../charts/LineChart";
 import HomeDropdown from "./HomeDropdown";
 import Image from 'next/image';
 import WeUpLogo from '../assets/weup.png';
+import p1 from '../assets/p1.png';
+import p2 from '../assets/p2.png';
+import p3 from '../assets/p3.png';
+import p4 from '../assets/p4.png';
+
 
 export default function Home2() {
 
@@ -51,25 +56,25 @@ export default function Home2() {
                                     <span className="text-md font-semibold text-gray-900 dark:text-white">zachedey</span>
                                     <span className="text-md font-normal text-gray-500 dark:text-gray-400">11:46p</span>
                                 </div>
-                                <p className="text-sm font-normal pt-1 pb-2.5 mb-2 text-gray-900 dark:text-white">Take a picture with your breakfast!</p>
+                                <p className="text-sm font-normal pb-2.5 mb-2 text-gray-900 dark:text-white">Take a selfie out in the great outdoors. You know where I'll be tomorrow morning.</p>
                                 {/* <h1 className="text-sm font-semibold">
                                     Group Members
                                 </h1> */}
                                 <div className="flex my-1 space-x-1">
                                     <div className="relative">
-                                        <Image src={WeUpLogo} className="w-12 h-12 rounded-full border-lime-500 border-4 border-opacity-75" alt={''} />
+                                        <Image src={p1} className="w-12 h-12 rounded-full border-blue-600 border-4 border-opacity-25" alt={''} />
                                     </div>
                                     <div className="relative">
-                                        <Image src={WeUpLogo} className="w-12 h-12 rounded-full border-gray-500 border-4 border-opacity-0" alt={''} />
+                                        <Image src={p2} className="w-12 h-12 rounded-full border-gray-600 border-4 border-opacity-0" alt={''} />
                                     </div>
                                     <div className="relative">
-                                        <Image src={WeUpLogo} className="w-12 h-12 rounded-full border-red-600 border-4 border-opacity-75" alt={''} />
+                                        <Image src={p3} className="w-12 h-12 rounded-full border-red-600 border-4 border-opacity-25" alt={''} />
                                     </div>
                                     <div className="relative">
-                                        <Image src={WeUpLogo} className="w-12 h-12 rounded-full border-lime-500 border-4 border-opacity-75" alt={''} />
+                                        <Image src={p4} className="w-12 h-12 rounded-full border-blue-600 border-4 border-opacity-25" alt={''} />
                                     </div>
                                 </div>
-                                <span className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">caitlinclark, +3 have submitted.</span>
+                                <span className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">charleyapjwe, +3 have submitted.</span>
                         </div>
                         
 

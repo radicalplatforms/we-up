@@ -1,4 +1,3 @@
-"use client";
 import "chart.js/auto";
 import { reverse } from "dns";
 import { Line } from "react-chartjs-2";

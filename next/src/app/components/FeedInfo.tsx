@@ -1,9 +1,17 @@
-"use client";
-import { useState } from "react";
-import LineChart from "../charts/LineChart";
-import HomeDropdown from "./HomeDropdown";
 import Image from 'next/image';
 import WeUpLogo from '../assets/weup.png';
+import ZachEdey from '../assets/zachedey.png';
+import ZachEdeyBreakfast from '../assets/zachedey_breakfast.jpg';
+import Guest from '../assets/guest.png'
+import GuestBreakfast from '../assets/guest_breakfast.png'
+import Snow from '../assets/snow.png'
+import Snow2 from '../assets/snow2.png'
+import Snow3 from '../assets/snow3.png'
+import Snow4 from '../assets/snow4.png'
+import p1 from '../assets/p1.png';
+import p2 from '../assets/p2.png';
+import p3 from '../assets/p3.png';
+import p4 from '../assets/p4.png';
 
 export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick: any }) {
 
@@ -48,7 +56,7 @@ export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick
                             <li className="py-4 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-6">
                                 <div className="flex items-center space-x-3 px-4">
                                     <div className="flex-shrink-0">
-                                        <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
+                                        <Image src={ZachEdey} className="w-8 h-8 rounded-full" alt={''} />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
@@ -59,23 +67,71 @@ export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick
                                         </p>
                                     </div>
                                 </div>
-                                <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
+                                <Image src={ZachEdeyBreakfast} className="my-4 w-full" alt={''} />
                             </li>
                             <li className="py-4 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-6">
                                 <div className="flex items-center space-x-3 px-4">
                                     <div className="flex-shrink-0">
-                                        <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
+                                        <Image src={Guest} className="w-8 h-8 rounded-full" alt={''} />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
-                                            zachedey
+                                            jonapaweui
                                         </p>
                                         <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                                            07:01 AM
+                                            07:09 AM
                                         </p>
                                     </div>
                                 </div>
-                                <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
+                                <Image src={Snow} className="my-4" alt={''} />
+                            </li>
+                            <li className="py-4 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-6">
+                                <div className="flex items-center space-x-3 px-4">
+                                    <div className="flex-shrink-0">
+                                        <Image src={p1} className="w-8 h-8 rounded-full" alt={''} />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
+                                            charleyapjwe
+                                        </p>
+                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                            07:29 AM
+                                        </p>
+                                    </div>
+                                </div>
+                                <Image src={Snow2} className="my-4" alt={''} />
+                            </li>
+                            <li className="py-4 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-6">
+                                <div className="flex items-center space-x-3 px-4">
+                                    <div className="flex-shrink-0">
+                                        <Image src={p2} className="w-8 h-8 rounded-full" alt={''} />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
+                                            lilaschrivers
+                                        </p>
+                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                            07:45 AM
+                                        </p>
+                                    </div>
+                                </div>
+                                <Image src={Snow3} className="my-4" alt={''} />
+                            </li>
+                            <li className="py-4 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-6">
+                                <div className="flex items-center space-x-3 px-4">
+                                    <div className="flex-shrink-0">
+                                        <Image src={p4} className="w-8 h-8 rounded-full" alt={''} />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
+                                            cassiepoppins
+                                        </p>
+                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                            8:15 AM
+                                        </p>
+                                    </div>
+                                </div>
+                                <Image src={Snow4} className="my-4" alt={''} />
                             </li>
                         </ul>
                     </div>

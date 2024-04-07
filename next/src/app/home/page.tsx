@@ -1,4 +1,3 @@
-"use client";
 import React, { Component } from 'react';
 import HomeDropdown from '../components/HomeDropdown';
 import WeUpLogo from '../assets/weup.png';
