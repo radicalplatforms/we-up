@@ -20,11 +20,42 @@ export default function Home() {
     );
       
     return (
-        <main className='flex min-h-screen flex-col items-center justify-between p-24 bg-gray-100 dark:bg-gray-900'>
+        <>
+        <div className="bg-white">
+            <ul role="list" className="w-4/12">
+                <li className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
+                    <div className="flex items-center space-x-3 rtl:space-x-reverse px-4">
+                        <div className="flex-shrink-0">
+                            <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                            <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
+                                zachedey
+                            </p>
+                            <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                07:01 AM
+                            </p>
+                        </div>
+                        <span className="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                            <span className="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
+                            Up!
+                        </span>
+                    </div>
+                    <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+        <div className='flex min-h-screen flex-col items-center justify-between p-24 bg-gray-100 dark:bg-gray-900'>
+            
             <div className="grid grid-cols-2 gap-8">
                 <div className="space-y-8">
                     <HomeDropdown />
-                    <div className="flex gap-4">
+                    <div className="flex gap-1">
                         <div className="relative">
                             <Image src={WeUpLogo} className="w-10 h-10 rounded-full" alt={''} />
                             <MoonIndicator />
@@ -59,10 +90,66 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-center justify-center">
-                    <Image src={WeUpLogo} className="w-48 h-80" alt={''} />
+                    <Image src={WeUpLogo} className="aspect-photo" alt={''} />
                 </div>
             </div>
-            <LineChart />
-        </main>
+
+
+
+            <div className="flex flex-col items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 my-4 w-full md:w-3/4 lg:w-1/2">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    Sleep Data
+                </h2>
+                <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
+                    <LineChart />
+                </div>
+            </div>
+            
+            <div>
+                <ul role="list" className="sm:w-screen md:w-full px-32 divide-y divide-gray-200 dark:divide-gray-700">
+                <li className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
+            <div className="flex items-center space-x-3 rtl:space-x-reverse px-4">
+                <div className="flex-shrink-0">
+                    <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
+                </div>
+                <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
+                        zachedey
+                    </p>
+                    <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                        07:01 AM
+                    </p>
+                </div>
+                <span className="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                    <span className="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
+                    Available
+                </span>
+            </div>
+            <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
+        </li>
+        <li className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
+            <div className="flex items-center space-x-3 rtl:space-x-reverse px-4">
+                <div className="flex-shrink-0">
+                    <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
+                </div>
+                <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
+                        zachedey
+                    </p>
+                    <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                        07:01 AM
+                    </p>
+                </div>
+                <span className="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                    <span className="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
+                    Available
+                </span>
+            </div>
+            <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
+        </li>
+                </ul>
+            </div>
+        </div>
+        </>
     );
 }
