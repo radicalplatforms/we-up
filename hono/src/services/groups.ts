@@ -1,17 +1,14 @@
 import { eq } from 'drizzle-orm'
 import { inArray } from 'drizzle-orm'
+import type { Context } from 'hono'
 import { Hono } from 'hono'
 import { env } from 'hono/adapter'
 import { groups, posts, prompts, usersToGroups } from '../schema'
 import type { Variables } from '../utils/inject-db'
 import injectDB from '../utils/inject-db'
+import type { GroupType, CloudflareResponse, Post } from '../utils/type-definitions'
 
 const app = new Hono<{ Variables: Variables }>()
-
-type GroupType = {
-  userId: string
-  rules: string
-}
 
 app.get('/', injectDB, async (c) => {
   return c.json(await c.get('db').select().from(groups).execute())
@@ -47,7 +44,6 @@ app.get('/:groupId', injectDB, async (c) => {
 app.post('/join', injectDB, async (c) => {
   const body = await c.req.json()
   return c.json(
-    // look over
     (
       await c
         .get('db')
@@ -83,7 +79,6 @@ app.post('/', injectDB, async (c) => {
 app.post('/leave', injectDB, async (c) => {
   const body = await c.req.json()
   return c.json(
-    // look over
     (
       await c
         .get('db')

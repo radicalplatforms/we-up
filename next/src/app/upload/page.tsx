@@ -100,5 +100,6 @@ export default function Upload() {
 
         </>
     );
-}
+}, {returnTo: '/profile'})
 
+export const runtime = 'edge';

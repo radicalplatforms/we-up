@@ -21,4 +21,4 @@ export async function uploadImageToCloudflare(file, userId) {
       console.error('Error uploading image:', error);
       alert('Error uploading image');
     }
-  }
+}
