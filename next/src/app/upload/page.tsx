@@ -4,8 +4,12 @@ import WeUpLogo from '../assets/weup.png';
 import Image from 'next/image';
 import HomeDropdown from '../components/HomeDropdown';
 import {uploadImageToCloudflare} from './imageUpload';
+import {withPageAuthRequired, getSession} from '@auth0/nextjs-auth0/edge';
+import {getUserAPI} from '../../util/api-helpers'
 
-export default function Upload() {
+export default async function Upload() {
+    const session = await getSession()
+    const user = await getUserAPI(session?.user.email)
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileChange = async (event) => {
@@ -13,7 +17,7 @@ export default function Upload() {
         if (file) {
             setSelectedFile(file);
             try {
-                await uploadImageToCloudflare(file, 'ldfm1lck9gcytdfju6b8dgjd')
+                await uploadImageToCloudflare(file, user.id) // replace with userId string if needed
                 console.log('Upload successful');
                 alert('Upload successful');
             } catch (error) {
