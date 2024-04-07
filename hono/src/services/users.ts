@@ -8,15 +8,26 @@ const app = new Hono<{ Variables: Variables }>()
 
 app.get('/:email', injectDB, async (c) => {
   const param = c.req.param('email')
+  // return c.json(
+  //   (
+  //     await c
+  //       .get('db')
+  //       .select()
+  //       .from(users)
+  //       .where(eq(users.email, decodeURIComponent(param)))
+  //       .execute()
+  //   )[0]
+  // )
   return c.json(
-    (
-      await c
-        .get('db')
-        .select()
-        .from(users)
-        .where(eq(users.email, decodeURI(param)))
-        .execute()
-    )[0]
+    await c.get('db').query.users.findFirst({
+      where: eq(users.email, decodeURIComponent(param)),
+      with: {
+        usersToGroups: {
+          columns: { userId: false, groupId: false },
+          with: { group: true },
+        },
+      },
+    })
   )
 })
 
@@ -25,6 +36,7 @@ app.post('/', injectDB, async (c) => {
   if (body.wakeTime && typeof body.wakeTime === 'string') {
     body.wakeTime = new Date(body.wakeTime)
   }
+  // console.log(encodeURIComponent(body.email))
   return c.json(
     (
       await c
