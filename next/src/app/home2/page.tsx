@@ -39,7 +39,7 @@ export default function Home2() {
             {/* Fixed upload button */}
             <div className='fixed bottom-0 w-full flex justify-center items-center z-10'>
                 <button onClick={handleClick} className='my-8 px-5 py-2 bg-blue-500 text-white text-sm font-bold tracking-wide rounded-full focus:outline-none shadow-lg hover:bg-blue-600 transition-colors duration-200'>
-                    I'm up!
+                    I&apos;m up!
                 </button>
             </div>
 
