@@ -5,7 +5,7 @@ import {getUserAPI} from '../../util/api-helpers'
 
 export default withPageAuthRequired(async function Profile() {
   const session = await getSession()
-  const user = getUserAPI(session?.user.email)
+  const user = await getUserAPI(session?.user.email)
 
   return (
     <main className="bg-white">
