@@ -9,7 +9,7 @@ const app = new Hono<{ Variables: Variables }>()
 app.get('/:email', injectDB, async (c) => {
   const param = c.req.param('email')
   console.log(param)
-  return c.json((await c.get('db').select().from(users).where(eq(users.email, param)).execute())[0])
+  return c.json((await c.get('db').select().from(users).where(eq(users.email, decodeURI(param))).execute())[0])
 })
 
 app.post('/', injectDB, async (c) => {
