@@ -1,36 +1,44 @@
 "use client";
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import WeUpLogo from '../assets/weup.png';
 import Image from 'next/image';
 import HomeDropdown from '../components/HomeDropdown';
+import fs from 'fs';
+import uploadImageToCloudflare from './imageUpload';
+
 
 export default function Upload() {
+
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+    };
+
+    const handleUpload = async () => {
+        if (selectedFile) {
+            try {
+                // Read the selected file and upload it
+                const fileBuffer = fs.readFileSync(selectedFile.path);
+                const filename = selectedFile.name;
+                const formData = new FormData();
+                formData.append("file", fileBuffer, filename);
+
+                // Call the upload function
+                await uploadImageToCloudflare(formData);
+            } catch (error) {
+                console.error('Error uploading image:', error);
+            }
+        } else {
+            console.error('No file selected');
+        }
+    };
 
     return (
         <>
 
             {/* Container for full screen */}
             <div className='flex min-h-screen flex-col items-center justify-between p-16 bg-gray-50 space-y-4'>
-
-            {/* User Post */}
-            {/* <div className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
-                <div className="flex items-center space-x-3 px-4">
-                    <div className="flex-shrink-0">
-                        <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
-                            gocats
-                        </p>
-                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                            07:05a
-                        </p>
-                    </div>
-                </div>
-                <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
-            </div> */}
-
-            {/* Group Info */}
             <div>
                 <div>
                     <h1 className="lowercase text-center mb-8 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Group <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Info</mark></h1>
