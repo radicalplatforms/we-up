@@ -41,11 +41,11 @@ export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick
                         </div> 
                          <div className="pt-4">
                     <div>
-                        <h1 className="lowercase text-center my-6 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-none tracking-tight text-gray-900 dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Feed</mark></h1>
+                        <h1 className="lowercase text-center my-6 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-semibold leading-none tracking-tight text-gray-900 dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Feed</mark></h1>
                     </div>
                     <div style={{ filter: isUp ? 'none' : 'blur(16px)' }}>
                         <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
-                            <li className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
+                            <li className="py-4 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-6">
                                 <div className="flex items-center space-x-3 px-4">
                                     <div className="flex-shrink-0">
                                         <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
@@ -61,7 +61,7 @@ export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick
                                 </div>
                                 <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
                             </li>
-                            <li className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
+                            <li className="py-4 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-6">
                                 <div className="flex items-center space-x-3 px-4">
                                     <div className="flex-shrink-0">
                                         <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
