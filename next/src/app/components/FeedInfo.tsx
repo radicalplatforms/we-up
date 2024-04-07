@@ -45,7 +45,7 @@ export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick
                     </div>
                     <div style={{ filter: isUp ? 'none' : 'blur(16px)' }}>
                         <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
-                            <li className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
+                            <li className="py-4 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-6">
                                 <div className="flex items-center space-x-3 px-4">
                                     <div className="flex-shrink-0">
                                         <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
@@ -61,7 +61,7 @@ export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick
                                 </div>
                                 <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
                             </li>
-                            <li className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
+                            <li className="py-4 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-6">
                                 <div className="flex items-center space-x-3 px-4">
                                     <div className="flex-shrink-0">
                                         <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
