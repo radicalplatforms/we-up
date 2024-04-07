@@ -55,7 +55,7 @@ export default function LineChart() {
                     beginAtZero: true,
                     max: 15,
                     stepSize: 1,
-                    callback: function(value) {
+                    callback: function(value: any) {
                         return value + 'a';
                     }
                 }
