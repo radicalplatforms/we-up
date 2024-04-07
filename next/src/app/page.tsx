@@ -5,7 +5,6 @@ import {Dialog} from '@headlessui/react'
 import {Bars3Icon, XMarkIcon} from '@heroicons/react/24/outline'
 import {ChevronRightIcon} from '@heroicons/react/20/solid'
 import Navbar from "./components/Navbar";
-import Image from "next/image";
 
 const navigation = [
   {name: 'Product', href: '#'},
@@ -86,8 +85,8 @@ export default function Example() {
                 transform="translate(24 24)"
                 clipPath="url(#2ade4387-9c63-4fc4-b754-10e687a0d332)"
               >
-                <Image src="https://imagedelivery.net/5zM6Rdl2uV8Hmr9WxRh20g/3895bacc-c4c2-44e2-93fb-bd9319f51a00/lg"
-                       alt=""/>
+                <img src="https://imagedelivery.net/5zM6Rdl2uV8Hmr9WxRh20g/3895bacc-c4c2-44e2-93fb-bd9319f51a00/lg"
+                     alt=""/>
               </foreignObject>
             </svg>
           </div>
