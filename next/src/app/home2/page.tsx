@@ -37,8 +37,8 @@ export default function Home2() {
             <Navbar showBackHome={false} />
 
             {/* Fixed upload button */}
-            <div className='fixed bottom-0 w-full flex justify-center items-center z-10'>
-                <button onClick={handleClick} className='my-8 px-5 py-2 bg-blue-500 text-white text-sm font-bold tracking-wide rounded-full focus:outline-none shadow-lg hover:bg-blue-600 transition-colors duration-200'>
+            <div className='fixed bottom-0 w-full flex justify-center items-center z-10 px-4 sm:px-0'>
+                <button onClick={handleClick} className='my-8 px-5 py-2 bg-blue-500 text-white text-sm sm:text-base font-bold tracking-wide rounded-full focus:outline-none shadow-lg hover:bg-blue-600 transition-colors duration-200 transform hover:scale-105'>
                     I&apos;m up!
                 </button>
             </div>
@@ -65,24 +65,41 @@ export default function Home2() {
             </div> */}
 
                 {/* Group Info + Prompt */}
-                <div>
-                    <div>
-                        <h1 className="lowercase text-center my-2 p-4 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">My <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Wakeup Times</mark></h1>
-                    </div>
-                    <div className="my-4 items-center justify-between p-1 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
-                        <LineChart />
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="pt-2 pb-3 md:flex text-center md:items-center md:justify-between">
+                        <h1 className="lowercase text-2xl font-bold leading-tight text-gray-900 sm:text-3xl md:text-4xl">My <mark className="px-2 text-white bg-blue-600 rounded">Wakeup Times</mark></h1>
+                        <div className="mt-4 items-center justify-between py-2 px-6 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+                            <LineChart />
+                        </div>
                     </div>
 
                     <div>
-                        <h1 className="lowercase text-center my-2 p-4 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Prompt</mark></h1>
+                        <h1 className="lowercase text-2xl text-center mb-1 p-4 font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Prompt</mark></h1>
                     </div>
+
+                    <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse">
+                        {/* <span className="text-xl font-bold text-gray-900 dark:text-white">Asian Sensations</span> */}
+                        <HomeDropdown />
+                        {/* <span className="text-sm font-normal text-gray-500 dark:text-gray-400">11:46p</span> */}
+                    </div>
+
+                    <div className="my-3 items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+                            <div className="items-center justify-between p-2 dark:bg-gray-700 dark:border-gray-600">
+                                <time className="text-xs font-semibold text-gray-600 sm:order-last">Rules</time>
+                                <div className="text-xs font-normal text-gray-500 dark:text-gray-300">                                
+                                    1. All members must aim for at least 7-9 hours of sleep each night.<br/>
+                                    2. No electronic devices in the bedroom after 9 PM.<br/>
+                                    3. Daily sleep logs must be updated by 10 AM the following morning.<br/>
+                                </div>
+                            </div>
+                    </div>        
                     
-                    <div className="mt-1 mb-6 items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+                    <div className="my-3 items-center justify-between p-6 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
                             <div className="flex items-center space-x-2 rtl:space-x-reverse">
                                 <span className="text-sm font-semibold text-gray-900 dark:text-white">zachedey</span>
                                 <span className="text-sm font-normal text-gray-500 dark:text-gray-400">11:46p</span>
                             </div>
-                            <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white">Take a picture with your breakfast!</p>
+                            <p className="text-sm font-normal pt-1 pb-2.5 text-gray-900 dark:text-white">Take a picture with your breakfast!</p>
                             <div className="flex my-1 space-x-1">
                                 <div className="relative">
                                     <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
@@ -99,27 +116,9 @@ export default function Home2() {
                             </div>
                             <span className="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400">caitlinclark, +3 have submitted.</span>
                     </div>
-                    <div className="flex items-start gap-2.5">
-                        {/* <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} /> */}
-                        <div className="flex flex-col w-full max-w-[320px] leading-1.5 p-6 border-gray-200 bg-white rounded-xl dark:bg-gray-700">
-                            <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse">
-                                {/* <span className="text-xl font-bold text-gray-900 dark:text-white">Asian Sensations</span> */}
-                                <HomeDropdown />
-                                {/* <span className="text-sm font-normal text-gray-500 dark:text-gray-400">11:46p</span> */}
-                            </div>
-                            
-                            <div className="mt-4 mb-2 items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
-                                <time className="text-xs font-semibold text-gray-600 sm:order-last">Rules</time>
-                                <div className="text-xs font-normal text-gray-500 dark:text-gray-300">                                
-                                    1. All members must aim for at least 7-9 hours of sleep each night.<br/>
-                                    2. No electronic devices in the bedroom after 9 PM.<br/>
-                                    3. Daily sleep logs must be updated by 10 AM the following morning.<br/>
-                                </div>
-                            </div>
+                    
 
-                            {/* Upload function */}
-
-                            <div className="my-2 flex items-center justify-center w-full">
+                    <div className="my-2 flex items-center justify-center w-full">
                                 <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                     {isUp ? (
                                     <Image src={WeUpLogo} className="w-full h-64 object-cover rounded-lg" alt={''} />
@@ -134,38 +133,16 @@ export default function Home2() {
                                     )}
                                     <input id="dropzone-file" type="file" className="hidden" onChange={handleImageUpload} />
                                 </label>
-                                </div>
-
-                        </div>
-                        <div id="dropdownDots" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700 dark:divide-gray-600">
-                            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                                <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reply</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Forward</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                            </div> 
                 </div>
 
 
                 {/* Feed */}
                 <div className="pt-4">
                     <div>
-                        <h1 className="lowercase text-center mb-2 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Feed</mark></h1>
+                        <h1 className="lowercase text-center mb-2 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-none tracking-tight text-gray-900 dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Feed</mark></h1>
                     </div>
-                    <div className="flex items-start gap-2.5">
+                    <div className="flex flex-col sm:flex-row items-start gap-2.5">
                         <div id="dropdownDots" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700 dark:divide-gray-600">
                             <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
                                 <li>
