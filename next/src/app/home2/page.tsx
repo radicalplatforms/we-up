@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import WeUpLogo from '../assets/weup.png';
 import Image from 'next/image';
 import HomeDropdown from '../components/HomeDropdown';
+import Navbar from '../components/Navbar';
 
 export default function Home2() {
           
@@ -20,9 +21,9 @@ export default function Home2() {
       
     return (
         <>
-
+            <Navbar showBackHome={false} />
             {/* Container for full screen */}
-            <div className='flex min-h-screen flex-col items-center justify-between p-16 bg-gray-50 space-y-4'>
+            <div className='flex min-h-screen flex-col items-center justify-between p-4 bg-gray-50 space-y-4'>
 
             {/* User Post */}
             {/* <div className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
@@ -42,10 +43,33 @@ export default function Home2() {
                 <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
             </div> */}
 
-            {/* Group Info */}
+            {/* Group Info + Prompt */}
             <div>
                 <div>
-                    <h1 className="lowercase text-center mb-8 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Group <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Info</mark></h1>
+                    <h1 className="lowercase text-center my-2 p-4 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Prompt</mark></h1>
+                </div>
+                
+                <div className="mt-1 mb-6 items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+                        <div className="flex items-center space-x-2 rtl:space-x-reverse">
+                            <span className="text-sm font-semibold text-gray-900 dark:text-white">zachedey</span>
+                            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">11:46p</span>
+                        </div>
+                        <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white">Take a picture with your breakfast!</p>
+                        <div className="flex my-1 space-x-1">
+                            <div className="relative">
+                                <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
+                            </div>
+                            <div className="relative">
+                                <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
+                            </div>
+                            <div className="relative">
+                                <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
+                            </div>
+                            <div className="relative">
+                                <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
+                            </div>
+                        </div>
+                        <span className="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400">caitlinclark, +3 have submitted.</span>
                 </div>
                 <div className="flex items-start gap-2.5">
                     {/* <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} /> */}
@@ -55,9 +79,18 @@ export default function Home2() {
                             <HomeDropdown />
                             {/* <span className="text-sm font-normal text-gray-500 dark:text-gray-400">11:46p</span> */}
                         </div>
+                        
+                        <div className="my-4 items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+                            <time className="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">Rules</time>
+                            <div className="text-xs font-normal text-gray-500 dark:text-gray-300">                                
+                                1. All members must aim for at least 7-9 hours of sleep each night.<br/>
+                                2. No electronic devices in the bedroom after 9 PM.<br/>
+                                3. Daily sleep logs must be updated by 10 AM the following morning.<br/>
+                            </div>
+                        </div>
 
                         {/* Upload function */}
-                        <div className="my-4 flex items-center justify-center w-full">
+                        <div className="my-1 flex items-center justify-center w-full">
                             <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                     <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -70,18 +103,6 @@ export default function Home2() {
                             </label>
                         </div> 
 
-                <div>
-                    <h1 className="lowercase text-center mb-4 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"><mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Rules</mark></h1>
-                </div>
-                <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
-                    <time className="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">Rules</time>
-                    <div className="text-xs font-normal text-gray-500 dark:text-gray-300">                                1. All members must aim for at least 7-9 hours of sleep each night.<br/>
-                                2. No electronic devices in the bedroom after 9 PM.<br/>
-                                3. Daily sleep logs must be updated by 10 AM the following morning.<br/>
-                                4. Weekly group discussions on sleep quality and improvement strategies.<br/>
-                                5. Respect all member&apos; experiences and suggestions.<br/>
-                                6. Maintain a positive and supportive environment.</div>
-                </div>
                     </div>
                     <div id="dropdownDots" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700 dark:divide-gray-600">
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
@@ -106,35 +127,12 @@ export default function Home2() {
             </div>
 
 
-            {/* Prompt */}
+            {/* Feed */}
             <div className="pt-4">
                 <div>
-                    <h1 className="lowercase text-center mb-8 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Prompt</mark></h1>
+                    <h1 className="lowercase text-center mb-2 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Feed</mark></h1>
                 </div>
                 <div className="flex items-start gap-2.5">
-                    {/* <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} /> */}
-                    <div className="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 bg-white rounded-e-xl rounded-es-xl dark:bg-gray-700">
-                        <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                            <span className="text-sm font-semibold text-gray-900 dark:text-white">zachedey</span>
-                            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">11:46p</span>
-                        </div>
-                        <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white">Take a picture with your breakfast!</p>
-                        <div className="flex my-1 space-x-1">
-                            <div className="relative">
-                                <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
-                            </div>
-                            <div className="relative">
-                                <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
-                            </div>
-                            <div className="relative">
-                                <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
-                            </div>
-                            <div className="relative">
-                                <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
-                            </div>
-                        </div>
-                        <span className="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400">caitlinclark, +3 have submitted.</span>
-                    </div>
                     <div id="dropdownDots" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700 dark:divide-gray-600">
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
                             <li>
