@@ -47,7 +47,6 @@ app.get('/:groupId', injectDB, async (c) => {
 app.post('/join', injectDB, async (c) => {
   const body = await c.req.json()
   return c.json(
-    // look over
     (
       await c
         .get('db')
@@ -83,7 +82,6 @@ app.post('/', injectDB, async (c) => {
 app.post('/leave', injectDB, async (c) => {
   const body = await c.req.json()
   return c.json(
-    // look over
     (
       await c
         .get('db')

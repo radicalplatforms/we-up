@@ -7,7 +7,7 @@ import {uploadImageToCloudflare} from './imageUpload';
 import {withPageAuthRequired, getSession} from '@auth0/nextjs-auth0/edge';
 import {getUserAPI} from '../../util/api-helpers'
 
-export default async function Upload() {
+export default withPageAuthRequired(async function Upload() {
     const session = await getSession()
     const user = await getUserAPI(session?.user.email)
     const [selectedFile, setSelectedFile] = useState(null);
@@ -104,5 +104,6 @@ export default async function Upload() {
 
         </>
     );
-}
+}, {returnTo: '/profile'})
 
+export const runtime = 'edge';
