@@ -1,6 +1,6 @@
 import FormData from 'form-data';
 
-export async function uploadImageToCloudflare(file: File, userId) {
+export async function uploadImageToCloudflare(file: File, userId: String) {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("userId", userId)
