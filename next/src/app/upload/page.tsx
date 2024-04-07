@@ -6,18 +6,25 @@ import HomeDropdown from '../components/HomeDropdown';
 import {uploadImageToCloudflare} from './imageUpload';
 import {withPageAuthRequired, getSession} from '@auth0/nextjs-auth0/edge';
 import {getUserAPI} from '../../util/api-helpers'
+import { User } from '../../../../hono/src/utils/type-definitions'
 
 export default withPageAuthRequired(async function Upload() {
     const session = await getSession()
-    const user = await getUserAPI(session?.user.email)
-    const [selectedFile, setSelectedFile] = useState(null);
+    const user = (await getUserAPI(session?.user.email)) as User
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-    const handleFileChange = async (event) => {
-        const file = event.target.files[0];
-        if (file) {
+
+    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files.length > 0) {
+            const file = event.target.files[0];
             setSelectedFile(file);
+        } else {
+            console.log("No file selected or 'files' is null");
+            setSelectedFile(null);
+        }
+        if (selectedFile) {
             try {
-                await uploadImageToCloudflare(file, user.id) // replace with userId string if needed
+                await uploadImageToCloudflare(selectedFile, user.id) // replace with userId string if needed
                 console.log('Upload successful');
                 alert('Upload successful');
             } catch (error) {

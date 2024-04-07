@@ -24,6 +24,7 @@ export interface Post {
 }
 
 export type User = {
+  id: string
   name: string
   email: string
   wakeTime: Date
