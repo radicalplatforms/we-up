@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm'
 import { inArray } from 'drizzle-orm'
-import type { Context} from 'hono';
+import type { Context } from 'hono'
 import { Hono } from 'hono'
 import { env } from 'hono/adapter'
 import { groups, posts, prompts, usersToGroups } from '../schema'
