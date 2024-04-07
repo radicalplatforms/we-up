@@ -51,12 +51,12 @@ export default function Home2() {
                     {/* <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} /> */}
                     <div className="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 bg-white rounded-e-xl rounded-es-xl dark:bg-gray-700">
                         <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse">
-                            <span className="text-xl font-bold text-gray-900 dark:text-white">Asian Sensations</span>
+                            {/* <span className="text-xl font-bold text-gray-900 dark:text-white">Asian Sensations</span> */}
                             <HomeDropdown />
                             {/* <span className="text-sm font-normal text-gray-500 dark:text-gray-400">11:46p</span> */}
                         </div>
-                        <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white">Take a picture with your breakfast!</p>
-                        <div className="flex my-1 space-x-1 justify-center ">
+                        <p className="text-sm font-normal py-2.5 text-center text-gray-900 dark:text-white">Take a picture with your breakfast!</p>
+                        <div className="flex my-1 space-x-1 justify-center">
                             <div className="relative">
                                 <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
                             </div>
