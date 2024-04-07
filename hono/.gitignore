@@ -2,3 +2,4 @@ node_modules
 .wrangler
 .idea
 .dev.vars
+.env
