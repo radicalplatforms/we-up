@@ -22,6 +22,13 @@ app.use('*', prettyJSON(), async (c, next) => {
   await next()
 })
 
+app.use('*', async (c, next) => {
+  c.header('Access-Control-Allow-Origin', '*')
+  c.header('Access-Control-Allow-Methods', 'GET, PUT, POST')
+  c.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  await next()
+})
+
 app.get('/', async (c) => {
   return c.text(`We Up API v${version}`)
 })

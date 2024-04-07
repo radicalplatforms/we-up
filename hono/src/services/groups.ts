@@ -1,16 +1,14 @@
 import { eq } from 'drizzle-orm'
 import { inArray } from 'drizzle-orm'
+import type { Context } from 'hono'
 import { Hono } from 'hono'
+import { env } from 'hono/adapter'
 import { groups, posts, prompts, usersToGroups } from '../schema'
 import type { Variables } from '../utils/inject-db'
 import injectDB from '../utils/inject-db'
+import type { GroupType, CloudflareResponse, Post } from '../utils/type-definitions'
 
 const app = new Hono<{ Variables: Variables }>()
-
-type GroupType = {
-  userId: string
-  rules: string
-}
 
 app.get('/', injectDB, async (c) => {
   return c.json(await c.get('db').select().from(groups).execute())
@@ -46,7 +44,6 @@ app.get('/:groupId', injectDB, async (c) => {
 app.post('/join', injectDB, async (c) => {
   const body = await c.req.json()
   return c.json(
-    // look over
     (
       await c
         .get('db')
@@ -82,7 +79,6 @@ app.post('/', injectDB, async (c) => {
 app.post('/leave', injectDB, async (c) => {
   const body = await c.req.json()
   return c.json(
-    // look over
     (
       await c
         .get('db')
@@ -107,19 +103,28 @@ app.post('/prompt', injectDB, async (c) => {
 })
 
 app.post('/post', injectDB, async (c) => {
-  const body = await c.req.json()
-  if (body.timestamp && typeof body.timestamp === 'string') {
-    body.timestamp = new Date(body.timestamp)
-  }
-  return c.json(
-    (
-      await c
-        .get('db')
-        .insert(posts)
-        .values({ ...body })
-        .returning()
-    )[0]
+  const body = (await c.req.formData()) as FormData
+  const file = body.get('file') as unknown as File
+  const send = new FormData()
+  send.append('file', file, file.name)
+  const { CLOUDFLARE_ACCOUNT_ID } = env<{ CLOUDFLARE_ACCOUNT_ID: string }>(c as Context)
+  const { CLOUDFLARE_API_TOKEN } = env<{ CLOUDFLARE_API_TOKEN: string }>(c as Context)
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/images/v1`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${CLOUDFLARE_API_TOKEN}`,
+      },
+      body: send,
+    }
   )
+  const resJson = (await response.json()) as CloudflareResponse
+  const photo_url = resJson.result.variants[4]
+
+  const userId = body.get('userId')
+  const postBody = { userId, photoUrl: photo_url, timestamp: new Date() } as Post
+  return c.json((await c.get('db').insert(posts).values(postBody).returning())[0])
 })
 
 export default app

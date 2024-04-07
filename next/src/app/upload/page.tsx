@@ -1,36 +1,47 @@
 "use client";
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import WeUpLogo from '../assets/weup.png';
 import Image from 'next/image';
 import HomeDropdown from '../components/HomeDropdown';
+import {uploadImageToCloudflare} from './imageUpload';
+import {withPageAuthRequired, getSession} from '@auth0/nextjs-auth0/edge';
+import {getUserAPI} from '../../util/api-helpers'
+import { User } from '../../../../hono/src/utils/type-definitions'
 
-export default function Upload() {
+export default withPageAuthRequired(async function Upload() {
+    const session = await getSession()
+    const user = (await getUserAPI(session?.user.email)) as User
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+
+    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files.length > 0) {
+            const file = event.target.files[0];
+            setSelectedFile(file);
+        } else {
+            console.log("No file selected or 'files' is null");
+            setSelectedFile(null);
+        }
+        if (selectedFile) {
+            try {
+                await uploadImageToCloudflare(selectedFile, user.id) // replace with userId string if needed
+                console.log('Upload successful');
+                alert('Upload successful');
+            } catch (error) {
+                console.error('Error uploading image:', error);
+                alert('Error uploading image');
+            }
+        } else {
+            console.error('No file selected');
+            alert('No file selected');
+        }
+    };
 
     return (
         <>
 
             {/* Container for full screen */}
             <div className='flex min-h-screen flex-col items-center justify-between p-16 bg-gray-50 space-y-4'>
-
-            {/* User Post */}
-            {/* <div className="py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-lg shadow-md my-2">
-                <div className="flex items-center space-x-3 px-4">
-                    <div className="flex-shrink-0">
-                        <Image src={WeUpLogo} className="w-8 h-8 rounded-full" alt={''} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
-                            gocats
-                        </p>
-                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                            07:05a
-                        </p>
-                    </div>
-                </div>
-                <Image src={WeUpLogo} className="my-4 w-full" alt={''} />
-            </div> */}
-
-            {/* Group Info */}
             <div>
                 <div>
                     <h1 className="lowercase text-center mb-8 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Group <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Info</mark></h1>
@@ -54,7 +65,7 @@ export default function Upload() {
                                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                                     <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                 </div>
-                                <input id="dropzone-file" type="file" className="hidden" />
+                                <input id="dropzone-file" type="file" className="hidden" onChange={handleFileChange} />
                             </label>
                         </div> 
 
@@ -100,5 +111,6 @@ export default function Upload() {
 
         </>
     );
-}
+}, {returnTo: '/profile'})
 
+export const runtime = 'edge';
