@@ -1,25 +1,71 @@
 "use client";
-
 import "chart.js/auto";
+import { reverse } from "dns";
 import { Line } from "react-chartjs-2";
 
 export default function LineChart() {
     const data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ["4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7"],
         datasets: [
             {
-                label: "My First Dataset",
-                data: [65, 59, 80, 81, 56, 55, 40],
-                fill: true,
-                borderColor: "rgb(75, 192, 192)",
-                tension: 0.1
+                label: "Wake Up Time for Week",
+                data: [6, 7, 6, 7, 6, 7, 8],
+                fill: false,
+                borderColor: "rgb(28, 100, 242)",
+                tension: 0.5,  // Increase this value to make the curve smoother
+                pointRadius: 2,  // Make the point for the current day larger
+                pointHoverRadius: 2,
+            },
+            {
+                label: "Today",
+                data: [null, null, null, null, null, null, 8],  // Only the last day has a data point
+                fill: false,
+                borderColor: "rgb(28, 100, 242)",  // Use a different color for the current day
+                pointRadius: 7,  // Make the point for the current day larger
+                pointHoverRadius: 7,
             }
         ]
     };
 
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false,
+            },
+            tooltip: {
+                enabled: false,
+            }
+        },
+        scales: {
+            x: {
+                display: true,
+                grid: {
+                    display: false
+                },
+            },
+            y: {
+                display: true,
+                reverse: true,
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    color: 'gray',
+                    beginAtZero: true,
+                    max: 15,
+                    stepSize: 1,
+                    callback: function(value) {
+                        return value + 'a';
+                    }
+                }
+            }
+        }
+    };
+
     return (
-        <div className="w-auto">
-            <Line data={data} />
+        <div className="w-auto p-4">
+            <Line data={data} options={{ ...options, plugins: { ...options.plugins } }} />
         </div>
     );
 }
