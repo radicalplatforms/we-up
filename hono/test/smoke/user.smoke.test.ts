@@ -36,9 +36,11 @@ jest.mock('../../src/utils/inject-db', () => {
   }
 })
 
+const encodedString = encodeURIComponent('john@example.com')
+
 const encodedUser = {
   name: 'John Doe',
-  email: encodeURI('john@example.com'),
+  email: 'john@example.com',
   photoUrl: 'https://example.com/john.jpg',
   wakeTime: '2024-04-06T08:00:00+00:00',
 }
@@ -77,7 +79,7 @@ describe('[Smoke] Items: simple test on each endpoint, no seeding', () => {
   })
 
   test('GET /items: should return no items', async () => {
-    const res = await app.request('/api/user/john@example.com')
+    const res = await app.request(`/api/user/${encodedString}`)
     expect(res.status).toBe(200)
     const { email, name, photoUrl } = (await res.json()) as UserType
 
