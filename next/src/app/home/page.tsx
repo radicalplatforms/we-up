@@ -1,7 +1,9 @@
 "use client";
+import React, { Component } from 'react';
 import HomeDropdown from '../components/HomeDropdown';
 import WeUpLogo from '../assets/weup.png';
 import Image from 'next/image';
+import LineChart from '../charts/LineChart';
 
 export default function Home() {
       
@@ -60,6 +62,7 @@ export default function Home() {
                     <Image src={WeUpLogo} className="w-48 h-80" alt={''} />
                 </div>
             </div>
+            <LineChart />
         </main>
     );
 }
