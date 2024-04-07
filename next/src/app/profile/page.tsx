@@ -1,7 +1,10 @@
-import {PhotoIcon, UserCircleIcon} from '@heroicons/react/24/solid'
+import {UserCircleIcon} from '@heroicons/react/24/solid'
 import Navbar from "../components/Navbar";
+import {withPageAuthRequired, getSession} from '@auth0/nextjs-auth0/edge';
 
-export default function Example() {
+export default withPageAuthRequired(async function Profile() {
+  const session = await getSession();
+
   return (
     <main className="bg-white">
       <Navbar showBackHome={true}/>
@@ -25,6 +28,7 @@ export default function Example() {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    value={session?.user.email}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -40,6 +44,7 @@ export default function Example() {
                     name="first-name"
                     id="first-name"
                     autoComplete="given-name"
+                    value={session?.user.name}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -95,4 +100,6 @@ export default function Example() {
       </form>
     </main>
   )
-}
+}, {returnTo: '/profile'})
+
+export const runtime = 'edge';
