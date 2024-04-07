@@ -1,12 +1,11 @@
 import { eq } from 'drizzle-orm'
 import { inArray } from 'drizzle-orm'
-import type { Context } from 'hono'
 import { Hono } from 'hono'
 import { env } from 'hono/adapter'
 import { groups, posts, prompts, usersToGroups } from '../schema'
 import type { Variables } from '../utils/inject-db'
 import injectDB from '../utils/inject-db'
-import type { GroupType, CloudflareResponse, Post } from '../utils/type-definitions'
+import type { GroupType } from '../utils/type-definitions'
 
 const app = new Hono<{ Variables: Variables }>()
 
