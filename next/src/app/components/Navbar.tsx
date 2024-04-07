@@ -1,5 +1,3 @@
-'use client'
-
 import WeUpLogoBlack from '../assets/we-up-black.png';
 import Image from 'next/image';
 

@@ -1,18 +1,17 @@
 "use client";
-import React, { Component, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WeUpLogo from '../assets/weup.png';
 import Image from 'next/image';
 import HomeDropdown from '../components/HomeDropdown';
 import {uploadImageToCloudflare} from './imageUpload';
-import {withPageAuthRequired, getSession} from '@auth0/nextjs-auth0/edge';
+import {withPageAuthRequired, getSession, Session} from '@auth0/nextjs-auth0/edge';
 import {getUserAPI} from '../../util/api-helpers'
 import { User } from '../../../../hono/src/utils/type-definitions'
 
 export default withPageAuthRequired(async function Upload() {
-    const session = await getSession()
-    const user = (await getUserAPI(session?.user.email)) as User
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
+    const [user, setUser] = useState<User | null>(null);
+    const [session, setSession] = useState<Session | null>(null);
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
@@ -24,16 +23,12 @@ export default withPageAuthRequired(async function Upload() {
         }
         if (selectedFile) {
             try {
-                await uploadImageToCloudflare(selectedFile, user.id) // replace with userId string if needed
+                await uploadImageToCloudflare(selectedFile, String(user?.id)) // replace with userId string if needed
                 console.log('Upload successful');
                 alert('Upload successful');
             } catch (error) {
-                console.error('Error uploading image:', error);
-                alert('Error uploading image');
+                console.error('Error uploading file:', error);
             }
-        } else {
-            console.error('No file selected');
-            alert('No file selected');
         }
     };
 
