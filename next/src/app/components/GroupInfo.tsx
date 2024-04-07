@@ -56,7 +56,7 @@ export default function Home2() {
                                     <span className="text-md font-semibold text-gray-900 dark:text-white">zachedey</span>
                                     <span className="text-md font-normal text-gray-500 dark:text-gray-400">11:46p</span>
                                 </div>
-                                <p className="text-sm font-normal pb-2.5 mb-2 text-gray-900 dark:text-white">Take a selfie out in the great outdoors. You know where I'll be tomorrow morning.</p>
+                                <p className="text-sm font-normal pb-2.5 mb-2 text-gray-900 dark:text-white">Take a selfie out in the great outdoors. You know where I&apos;ll be tomorrow morning.</p>
                                 {/* <h1 className="text-sm font-semibold">
                                     Group Members
                                 </h1> */}
