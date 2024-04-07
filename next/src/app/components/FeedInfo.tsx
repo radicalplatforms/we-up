@@ -41,7 +41,7 @@ export default function FeedInfo({ isUp, handleClick }: { isUp: any, handleClick
                         </div> 
                          <div className="pt-4">
                     <div>
-                        <h1 className="lowercase text-center my-6 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-none tracking-tight text-gray-900 dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Feed</mark></h1>
+                        <h1 className="lowercase text-center my-6 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-semibold leading-none tracking-tight text-gray-900 dark:text-white">Today&apos;s <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Feed</mark></h1>
                     </div>
                     <div style={{ filter: isUp ? 'none' : 'blur(16px)' }}>
                         <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
