@@ -33,15 +33,11 @@ export default function Home2() {
     return (
         <>
         <div className="transition-all duration-500 ease-in-out">
-            <Navbar showBackHome={false} />
+            <Navbar linkText={"Profile"} linkHref={"/profile"}/>
             {/* Container for full screen */}
             <div className='flex min-h-screen flex-col items-center justify-between p-4 bg-gray-50 space-y-4'>
-
-                {/* Group Info + Prompt */}
-                <GroupInfo />
-
-                {/* Feed */}
-                <FeedInfo isUp={isUp} handleClick={handleClick}/>
+            {/* Feed */}
+            <FeedInfo isUp={isUp} handleClick={handleClick}/>
             </div>
         </div>
 
