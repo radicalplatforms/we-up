@@ -49,7 +49,7 @@ export default function Home() {
                                 2. No electronic devices in the bedroom after 9 PM.<br/>
                                 3. Daily sleep logs must be updated by 10 AM the following morning.<br/>
                                 4. Weekly group discussions on sleep quality and improvement strategies.<br/>
-                                5. Respect all members' experiences and suggestions.<br/>
+                                5. Respect all member&apos; experiences and suggestions.<br/>
                                 6. Maintain a positive and supportive environment.
                             </p>
                         </div>
