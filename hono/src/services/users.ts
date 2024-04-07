@@ -8,7 +8,6 @@ const app = new Hono<{ Variables: Variables }>()
 
 app.get('/:email', injectDB, async (c) => {
   const param = c.req.param('email')
-  console.log(param)
   return c.json(
     (
       await c

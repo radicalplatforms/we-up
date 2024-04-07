@@ -36,20 +36,20 @@ jest.mock('../../src/utils/inject-db', () => {
   }
 })
 
-const testUser1 = {
+const encodedUser = {
   name: 'John Doe',
   email: encodeURI('john@example.com'),
   photoUrl: 'https://example.com/john.jpg',
   wakeTime: '2024-04-06T08:00:00+00:00',
 }
 
-const testUser2 = {
+const decodedUser = {
   name: 'John Doe',
   email: 'john@example.com',
   photoUrl: 'https://example.com/john.jpg',
 }
 
-type userType = {
+type UserType = {
   name: string
   email: string
   photoUrl: string
@@ -67,20 +67,20 @@ describe('[Smoke] Items: simple test on each endpoint, no seeding', () => {
   test('POST /items: should create and return one item', async () => {
     const res = await app.request('/api/user', {
       method: 'POST',
-      body: JSON.stringify(testUser1),
+      body: JSON.stringify(encodedUser),
       headers: { 'Content-Type': 'application/json' },
     })
     expect(res.status).toBe(200)
     const resJSON = await res.json()
 
-    expect(resJSON as userType).toMatchObject(testUser2)
+    expect(resJSON as UserType).toMatchObject(decodedUser)
   })
 
   test('GET /items: should return no items', async () => {
     const res = await app.request('/api/user/john@example.com')
     expect(res.status).toBe(200)
-    const { email, name, photoUrl } = (await res.json()) as userType
+    const { email, name, photoUrl } = (await res.json()) as UserType
 
-    expect({ email, name, photoUrl }).toEqual(testUser2)
+    expect({ email, name, photoUrl }).toEqual(decodedUser)
   })
 })
